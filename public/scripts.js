@@ -91,8 +91,9 @@ window.addEventListener('load', function() {
 
 		var checker = new XMLHttpRequest();
 
-		checker.open("GET", `????????????????????????????guess=${guess}&correct=${correct}`);
+		checker.open("GET", `/check_answers/${guess}/${correct}`);
 		checker.send();
+		debugger;
 
 		checker.addEventListener('load', function(e){
 			var servresponse = e.target.response;
