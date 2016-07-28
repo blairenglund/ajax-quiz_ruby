@@ -3,15 +3,11 @@ MyApp.get "/" do
 end
 
 MyApp.get "/check_answers/*/*" do
-	guess = params[guess]
-	correct = params[correct]
+	parameters = params['splat']
 
-	binding.pry
+	guess = parameters[0]
+	correct = parameters[1]
 
-	if guess == correct
-		return "Correct!"
-	else
-		return "Sorry!"
-	end
+	check_answer(guess,correct)
 
 end
