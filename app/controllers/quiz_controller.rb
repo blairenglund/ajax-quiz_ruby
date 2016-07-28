@@ -9,5 +9,4 @@ MyApp.get "/check_answers/*/*" do
 	correct = parameters[1]
 
 	check_answer(guess,correct)
-
 end
