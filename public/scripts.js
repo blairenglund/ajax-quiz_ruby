@@ -19,16 +19,7 @@ window.addEventListener('load', function() {
 
 		//populate the quiz fields with the first question and answers
 		currentq = q1;
-		questionfield.innerHTML = currentq.question;
-		option1.value = currentq.options.option1;
-		option2.value = currentq.options.option2;
-		option3.value = currentq.options.option3;
-		option4.value = currentq.options.option4;
-		option1label.innerHTML = currentq.options.option1;
-		option2label.innerHTML = currentq.options.option2;
-		option3label.innerHTML = currentq.options.option3;
-		option4label.innerHTML = currentq.options.option4;
-		correct = currentq.correct;
+		loadNextQ();
 	})
 	
 	// the submit button
@@ -75,6 +66,21 @@ window.addEventListener('load', function() {
 		guess = option4.value;
 	})
 
+	//function to populate the quiz fields with next q and a's
+	function loadNextQ() {
+		questionfield.innerHTML = currentq.question;
+		option1.value = currentq.options.option1;
+		option2.value = currentq.options.option2;
+		option3.value = currentq.options.option3;
+		option4.value = currentq.options.option4;
+		option1label.innerHTML = currentq.options.option1;
+		option2label.innerHTML = currentq.options.option2;
+		option3label.innerHTML = currentq.options.option3;
+		option4label.innerHTML = currentq.options.option4;
+		correct = currentq.correct;
+		display.innerHTML = '';
+	}
+
 	//function to reset radio buttons when new question is loaded
 	function uncheckall() {
 		option1.checked=false;
@@ -93,7 +99,6 @@ window.addEventListener('load', function() {
 
 		checker.open("GET", `/check_answers/${guess}/${correct}`);
 		checker.send();
-		debugger;
 
 		checker.addEventListener('load', function(e){
 			var servresponse = e.target.response;
@@ -123,66 +128,25 @@ window.addEventListener('load', function() {
 				if (currentq == q1){
 					uncheckall();
 					currentq = q2;
-					//populate the quiz fields with the second questions
-					questionfield.innerHTML = currentq.question;
-					option1.value = currentq.options.option1;
-					option2.value = currentq.options.option2;
-					option3.value = currentq.options.option3;
-					option4.value = currentq.options.option4;
-					option1label.innerHTML = currentq.options.option1;
-					option2label.innerHTML = currentq.options.option2;
-					option3label.innerHTML = currentq.options.option3;
-					option4label.innerHTML = currentq.options.option4;
-					correct = currentq.correct;
-					display.innerHTML = '';	
+					loadNextQ();	
 				}
 				else if (currentq == q2){
 					uncheckall();
 					currentq = q3;
 					//populate the quiz fields with the second questions
-					questionfield.innerHTML = currentq.question;
-					option1.value = currentq.options.option1;
-					option2.value = currentq.options.option2;
-					option3.value = currentq.options.option3;
-					option4.value = currentq.options.option4;
-					option1label.innerHTML = currentq.options.option1;
-					option2label.innerHTML = currentq.options.option2;
-					option3label.innerHTML = currentq.options.option3;
-					option4label.innerHTML = currentq.options.option4;
-					correct = currentq.correct;
-					display.innerHTML = '';
+					loadNextQ();	
 				}
 				else if (currentq == q3){
 					uncheckall();
 					currentq = q4;
 					//populate the quiz fields with the second questions
-					questionfield.innerHTML = currentq.question;
-					option1.value = currentq.options.option1;
-					option2.value = currentq.options.option2;
-					option3.value = currentq.options.option3;
-					option4.value = currentq.options.option4;
-					option1label.innerHTML = currentq.options.option1;
-					option2label.innerHTML = currentq.options.option2;
-					option3label.innerHTML = currentq.options.option3;
-					option4label.innerHTML = currentq.options.option4;
-					correct = currentq.correct;
-					display.innerHTML = '';
+					loadNextQ();	
 				}
 				else if (currentq == q4){
 					uncheckall();
 					currentq = q5;
 					//populate the quiz fields with the second questions
-					questionfield.innerHTML = currentq.question;
-					option1.value = currentq.options.option1;
-					option2.value = currentq.options.option2;
-					option3.value = currentq.options.option3;
-					option4.value = currentq.options.option4;
-					option1label.innerHTML = currentq.options.option1;
-					option2label.innerHTML = currentq.options.option2;
-					option3label.innerHTML = currentq.options.option3;
-					option4label.innerHTML = currentq.options.option4;
-					correct = currentq.correct;
-					display.innerHTML = '';
+					loadNextQ();
 				}
 			});
 		})
